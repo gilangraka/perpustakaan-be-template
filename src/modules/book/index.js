@@ -4,6 +4,10 @@ const controller = require("./controller");
 const { validateRequest } = require("../../helpers/validationHelper");
 const { storeSchema, updateSchema, updateImgSchema } = require("./schema");
 
+const multer = require("multer");
+const { storageMulter } = require("../../helpers/multerHelper");
+const uploadBook = multer({ storage: storageMulter("books") });
+
 // Endpoint Untuk Menambahkan Data Buku
 router.post("/", validateRequest(storeSchema), controller.store);
 
